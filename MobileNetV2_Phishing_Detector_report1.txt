@@ -1,0 +1,109 @@
+============================================================
+ĐỒ ÁN: PHÁT HIỆN WEBSITE PHISHING BẰNG MOBILENETV2
+============================================================
+
+[1/5] Đang đọc dữ liệu...
+
+Class names: ['legitimate', 'phishing']
+Number of classes: 2
+
+[2/5] Thiết lập tiền xử lý dữ liệu...
+
+[3/5] Xây dựng mô hình MobileNetV2...
+  - Đã tải MobileNetV2 pretrained trên ImageNet
+Model: "sequential"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ mobilenetv2_1.00_224 (Functional)    │ (None, 7, 7, 1280)          │       2,257,984 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ global_average_pooling2d             │ (None, 1280)                │               0 │
+│ (GlobalAveragePooling2D)             │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense (Dense)                        │ (None, 256)                 │         327,936 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization                  │ (None, 256)                 │           1,024 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout (Dropout)                    │ (None, 256)                 │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_1 (Dense)                      │ (None, 128)                 │          32,896 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_1 (Dropout)                  │ (None, 128)                 │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_2 (Dense)                      │ (None, 2)                   │             258 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 2,620,098 (9.99 MB)
+ Trainable params: 361,602 (1.38 MB)
+ Non-trainable params: 2,258,496 (8.62 MB)
+
+
+[4/5] HUẤN LUYỆN GIAI ĐOẠN 1 (Freeze Backbone)
+
+  - Train accuracy cuối: 76.69%
+  - Validation accuracy cuối: 68.00%
+
+[5/5] FINE-TUNING
+  - Số layers được fine-tune: 19/154
+
+  - Validation accuracy sau fine-tune: 70.25%
+
+  - Đã lưu mô hình: d:\DA_CK\MobileNetV2_Phishing_Detector.h5
+
+============================================================
+ĐÁNH GIÁ TRÊN TEST SET
+============================================================
+
+Test Loss: 0.4524
+Test Accuracy: 80.61%
+
+Đang dự đoán trên test set...
+
+============================================================
+KẾT QUẢ ĐÁNH GIÁ
+============================================================
+
+📊 TỔNG THỂ:
+  - Accuracy  : 80.61%
+  - Precision : 79.89%
+  - Recall    : 80.44%
+  - F1-Score  : 80.10%
+
+📋 THEO TỪNG LỚP:
+  - legitimate: Precision=74.45%, Recall=79.53%, F1=76.91%
+  - phishing: Precision=85.32%, Recall=81.34%, F1=83.28%
+
+============================================================
+CLASSIFICATION REPORT
+============================================================
+              precision    recall  f1-score   support
+
+  legitimate     0.7445    0.7953    0.7691       469
+    phishing     0.8532    0.8134    0.8328       686
+
+    accuracy                         0.8061      1155
+   macro avg     0.7989    0.8044    0.8010      1155
+weighted avg     0.8091    0.8061    0.8069      1155
+
+
+  - Đã lưu ma trận nhầm lẫn: d:\DA_CK\MobileNetV2_Phishing_Detector_confusion_matrix.png
+
+============================================================
+CHI PHÍ TÍNH TOÁN
+============================================================
+  - Tổng số tham số        : 2,620,098 (≈ 2.62 triệu)
+  - Thời gian huấn luyện  : 2731.70 giây
+  - Thời gian evaluate    : 43.15 giây
+  - Thời gian suy luận    : 58.35 giây
+  - Thời gian/mẫu         : 50.5221 ms
+  - Đã lưu đồ thị loss: d:\DA_CK\MobileNetV2_Phishing_Detector_loss.png
+  - Đã lưu đồ thị accuracy: d:\DA_CK\MobileNetV2_Phishing_Detector_accuracy.png
+
+============================================================
+KẾT LUẬN
+============================================================
+
+✅ KẾT QUẢ: Mô hình MobileNetV2 đạt độ chính xác 80.61% trên tập test.
+🚀 Khả năng phát hiện phishing (Recall): 81.34%
+📦 Mô hình nhẹ: 2.62 triệu tham số, suy luận 50.52 ms/ảnh
+

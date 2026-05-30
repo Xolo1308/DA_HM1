@@ -1,0 +1,12 @@
+timestamp,filename,model_used,prob_phish,predicted_label,actual_label,is_correct
+2026-05-02 21:27:49,20260502_212748_07d4c962.png,ResNet50,0.8178,Phishing,Legitimate,False
+2026-05-02 21:27:55,20260502_212755_77aaba62.png,ResNet50,0.8178,Phishing,Phishing,True
+2026-05-02 21:36:49,20260502_213649_170d1399.png,ResNet50,0.5172,Legitimate,Phishing,False
+2026-05-04 15:12:06,20260504_151206_e82ee064.png,ResNet50,0.4510,Legitimate,Legitimate,True
+2026-05-29 09:44:51,20260529_094451_d3f80fca.png,ResNet50,0.8178,Phishing,Phishing,True
+2026-05-29 09:59:09,20260529_095909_ace3b32c.png,ResNet50,0.7011,Phishing,Phishing,True
+2026-05-29 09:59:20,20260529_095920_56446743.png,ResNet50,0.7011,Phishing,Phishing,True
+2026-05-29 09:59:24,20260529_095923_79415803.png,ResNet50,0.7011,Phishing,Legitimate,False
+2026-05-29 10:05:19,20260529_100518_8ca93939.png,ResNet50,0.7011,Phishing,Phishing,True
+2026-05-29 10:17:16,20260529_101716_ebb94690.png,ResNet50,0.9384,Phishing,Phishing,True
+2026-05-30 15:37:37,20260530_153737_162b2204.png,ResNet50,0.4510,Legitimate,Phishing,False
